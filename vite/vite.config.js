@@ -70,6 +70,7 @@ export default defineConfig({
   },
 
   optimizeDeps: {
+    include: ['yup'],
     exclude: ['pinia', 'vuetify'],
     entries: ['./src/**/*.vue']
   },

@@ -9,6 +9,31 @@ export const useAppStore = defineStore('global-application', {
       model: false,
       text: '',
       color: ''
+    },
+    rules: {
+      email: [
+        (value) => {
+          try {
+            Yup.string()
+              .required('The email is required')
+              .email('The email is invalid')
+              .validateSync(value)
+            return true
+          } catch (error) {
+            return error.message
+          }
+        }
+      ],
+      password: [
+        (value) => {
+          try {
+            Yup.string().required('The password is required').validateSync(value)
+            return true
+          } catch (error) {
+            return error.message
+          }
+        }
+      ]
     }
   }),
 

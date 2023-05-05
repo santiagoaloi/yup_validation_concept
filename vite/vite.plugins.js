@@ -40,7 +40,14 @@ export function createVitePlugins() {
           'vue-router': ['createRouter', 'createWebHistory', 'useRouter', 'useRoute'],
 
           // Vuetify
-          vuetify: ['useDisplay', 'createVuetify', 'useTheme']
+          vuetify: ['useDisplay', 'createVuetify', 'useTheme'],
+
+          yup: [
+            // field validations
+            ['*', 'Yup'] // import { * as yup } from 'yup',
+          ],
+          //Facilitates dealing with validation form schemas
+          'vuetify/components/VTextField': ['VTextField']
         }
       ],
       dirs: [

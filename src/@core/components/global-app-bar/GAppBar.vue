@@ -1,5 +1,5 @@
 <template>
-  <VAppBar color="appbar-background" elevation="15" height="62" title="Application Boilerplate">
+  <VAppBar color="appbar-background" elevation="15" height="62" title="Yup validation concept">
     <GAppBarMenuRight />
   </VAppBar>
 </template>
