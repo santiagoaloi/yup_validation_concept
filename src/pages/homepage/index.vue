@@ -6,7 +6,7 @@
           <VCardText>
             <VCardTitle>Yup Validation Schema</VCardTitle>
             <VCardText>
-              <!-- @/@core/components/TestForm.vue -->
+              <!-- auto-imported @/@core/components/TestForm.vue -->
               <TestForm />
             </VCardText>
           </VCardText>
