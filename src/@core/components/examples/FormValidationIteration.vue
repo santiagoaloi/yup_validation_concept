@@ -1,17 +1,24 @@
 <template>
   <VForm v-model="validated" @submit.prevent="submitForm()">
     <VRow>
-      <VCol v-for="field in fields" :key="field.label" cols="12">
-        <Component
-          :is="field.component"
-          v-model="field.model"
-          :label="field.label"
-          :rules="field.rules"
-          class="my-1"
-        />
-      </VCol>
-      <VCol class="text-end">
-        <VBtn color="save-button" type="submit">Validate</VBtn>
+      <VCol cols="6">
+        <BasicCard title="Iterations">
+          <Component
+            v-for="field in fields"
+            :key="field.label"
+            :is="field.component"
+            v-model="field.model"
+            :label="field.label"
+            :rules="field.rules"
+            class="my-1"
+          />
+
+          <template #actions>
+            <div class="d-flex justify-end">
+              <VBtn color="save-button" type="submit">Validate</VBtn>
+            </div>
+          </template>
+        </BasicCard>
       </VCol>
     </VRow>
   </VForm>
