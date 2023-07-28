@@ -6,7 +6,7 @@
           <TitleSubtitle v-bind="{ title, subtitle }" />
         </div>
         <slot />
-        <div>
+        <div class="mt-5">
           <slot name="actions" />
         </div>
       </div>

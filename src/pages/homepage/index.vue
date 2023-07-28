@@ -1,5 +1,12 @@
 <template>
   <VContainer>
-    <FormValidationIteration />
+    <VRow>
+      <VCol>
+        <FormValidationIteration />
+      </VCol>
+      <VCol>
+        <FormValidationStateManagement />
+      </VCol>
+    </VRow>
   </VContainer>
 </template>

@@ -1,31 +1,27 @@
 <template>
   <VForm ref="formRef" v-model="validated" @submit.prevent="submitForm()">
-    <VRow>
-      <VCol cols="6">
-        <BasicCard title="Iterations">
-          <VRow>
-            <VCol cols="12" v-for="field in fields">
-              <Component
-                :placeholder="field.placeholder"
-                :key="field.label"
-                :is="field.component"
-                v-model="field.model"
-                :label="field.label"
-                :rules="field.rules"
-                class="my-1"
-              />
-            </VCol>
-          </VRow>
+    <BasicCard title="Iterations">
+      <VRow>
+        <VCol cols="12" v-for="field in fields">
+          <Component
+            :placeholder="field.placeholder"
+            :key="field.label"
+            :is="field.component"
+            v-model="field.model"
+            :label="field.label"
+            :rules="field.rules"
+            class="my-1"
+          />
+        </VCol>
+      </VRow>
 
-          <template #actions>
-            <div class="d-flex justify-end gap-3">
-              <VBtn color="grey" @click="resetFormValidations()">reset validation</VBtn>
-              <VBtn color="primary" type="submit">Validate</VBtn>
-            </div>
-          </template>
-        </BasicCard>
-      </VCol>
-    </VRow>
+      <template #actions>
+        <div class="d-flex justify-end gap-3">
+          <VBtn color="grey" @click="resetFormValidations()">reset validation</VBtn>
+          <VBtn color="primary" type="submit">Validate</VBtn>
+        </div>
+      </template>
+    </BasicCard>
   </VForm>
 </template>
 
