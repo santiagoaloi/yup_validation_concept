@@ -1,21 +1,26 @@
 <template>
-  <VForm v-model="validated" @submit.prevent="submitForm()">
+  <VForm ref="formRef" v-model="validated" @submit.prevent="submitForm()">
     <VRow>
       <VCol cols="6">
         <BasicCard title="Iterations">
-          <Component
-            v-for="field in fields"
-            :key="field.label"
-            :is="field.component"
-            v-model="field.model"
-            :label="field.label"
-            :rules="field.rules"
-            class="my-1"
-          />
+          <VRow>
+            <VCol cols="12" v-for="field in fields">
+              <Component
+                :placeholder="field.placeholder"
+                :key="field.label"
+                :is="field.component"
+                v-model="field.model"
+                :label="field.label"
+                :rules="field.rules"
+                class="my-1"
+              />
+            </VCol>
+          </VRow>
 
           <template #actions>
-            <div class="d-flex justify-end">
-              <VBtn color="save-button" type="submit">Validate</VBtn>
+            <div class="d-flex justify-end gap-3">
+              <VBtn color="grey" @click="resetFormValidations()">reset validation</VBtn>
+              <VBtn color="primary" type="submit">Validate</VBtn>
             </div>
           </template>
         </BasicCard>
@@ -26,8 +31,6 @@
 
 <script setup>
 import { VTextField } from 'vuetify/components/VTextField'
-
-const validated = ref(false)
 
 const rules = {
   email: [
@@ -58,20 +61,30 @@ const rules = {
 const fields = reactive([
   {
     label: 'Name',
+    placeholder: 'Harry Poter',
     model: '',
     rules: rules.name,
     component: markRaw(VTextField)
   },
   {
     label: 'Email',
+    placeholder: 'harry.potter@hogwarts.com',
+
     model: '',
     rules: rules.email,
     component: markRaw(VTextField)
   }
 ])
 
+const formRef = ref()
+const validated = ref(false)
+
 function submitForm() {
   if (!validated.value) return
   alert('form validation passed.')
+}
+
+async function resetFormValidations() {
+  await formRef.value.resetValidation()
 }
 </script>

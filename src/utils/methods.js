@@ -19,6 +19,22 @@ function useDebouncedRef(value, delay = 200) {
   })
 }
 
+function useNumberRef(value) {
+  const convertedValue = convertToNumber(value)
+
+  return customRef((track, trigger) => {
+    return {
+      get() {
+        track()
+        return convertedValue.value
+      },
+      set(newValue) {
+        convertedValue.value = convertToNumber(newValue)
+      }
+    }
+  })
+}
+
 function isObject(obj) {
   return obj !== null && typeof obj === 'object' && !Array.isArray(obj)
 }
